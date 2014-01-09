@@ -1,5 +1,15 @@
 tabify
 ======
+One page tabs system without ajax. All content holds on a page and hides on shows according to the user request.
+**tabify** has it's own hash routing system. So, when you change tab location.hash would be *#!{tabname}*.
+
+
+To track inner materials add `data-id` attribute to element. When you will click on this item, hash should be changed on *#!{tabname}/{id}*.
+```html
+<a class="lightbox" href="http://cdn.vectorstock.com/i/composite/73,11/christmas-sale-vector-1707311.jpg" data-id="1" title="image 1"><img src="http://images.gs-cdn.net/static/albums/120_328444.jpg" alt=""></a>
+```
+
+To start, you should add `href="#{tabname}` to your links and id *{tabname}* attribute to tab content element.
 
 ```html
 <ul id="tabify" class="list-inline navbar-brand">
