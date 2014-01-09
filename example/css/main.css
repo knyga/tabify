@@ -1,0 +1,21 @@
+/* -- bootstrap extension --*/
+.list-inline li:first-child {
+	margin-left: -15px;
+}
+
+.active {
+	text-decoration: underline;
+}
+
+/* -- default tab --*/
+/*#image {
+	display: none;
+}
+
+#video {
+	display: none;
+}
+
+#watch {
+	display: none;
+}*/
