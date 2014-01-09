@@ -44,3 +44,19 @@ tabify
 	</section>
 </div>
 ```
+
+```javascript
+$('#tabify').tabify({
+	/**
+	 * scroll animation time
+	 * @type {Number}
+	 */
+	scrollTime: 500,
+	/**
+	 * active className
+	 * @type {String}
+	 */
+	activeClass: 'active'
+};
+});
+```
