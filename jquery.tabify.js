@@ -86,7 +86,7 @@
 				var id = $(this).data('id');
 				
 				$(this).click(function() {
-					router.ignoreChange("#!" + name + "/" + id);
+					router.ignoreChange("#/" + name + "/" + id);
 				});
 
 				that.elements[id] = $(this);
@@ -135,7 +135,7 @@
 					tabs.active = name;
 				}
 
-				$this.attr('href', '#!' + $this.attr('href').substr(1));
+				$this.attr('href', '#/' + $this.attr('href').substr(1));
 			});
 
 			for (var i = 0, length = names.length, tname = ""; i < length; i++) {
@@ -158,6 +158,8 @@
 			}
 
 			tabs.getActive().show();
+;
+			tabs.get(tabs._default).head.attr('href', '#');
 
 			tabs._onReady.apply(tabs);
 		},
@@ -192,13 +194,22 @@
 			$(window).on('hashchange', router.handle);
 		},
 		handle: function() {
-			var hash = /#!([^\/]*)(\/(.+))?\/?/.exec(location.hash);
+			var hash = /#\/([^\/]*)(\/(.+))?\/?/.exec(location.hash);
+
+			if('' === location.hash) {
+				var href = String(document.location.href)
+					.replace(/\#.*/, '')
+					.replace(location.protocol + '//' + location.host, '');
+
+				window.history.replaceState(null, $('title').text(), href);
+			}
 
 			if (null == hash) {
 				router.onChange(tabs._default);
 			} else {
 				var name = hash[1],
 					id = hash[3];
+
 				router.onChange(name, id);
 			}
 		},
